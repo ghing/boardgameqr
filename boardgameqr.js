@@ -1,5 +1,5 @@
 (function() {
-  var Connect, Mu, QRCode;
+  var Connect, Mu, QRCode, port;
 
   QRCode = require('qrcode');
 
@@ -8,6 +8,8 @@
   Mu = require('mu2');
 
   Mu.root = process.cwd() + '/templates';
+
+  port = process.env.PORT || 8080;
 
   Connect.createServer().use('/', Connect.router(function(app) {
     app.get('/', function(req, res, next) {
@@ -49,6 +51,6 @@
         });
       });
     });
-  })).listen(8080);
+  })).listen(port);
 
 }).call(this);

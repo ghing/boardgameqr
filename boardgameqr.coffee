@@ -4,6 +4,8 @@ Mu = require 'mu2'
 
 Mu.root = process.cwd() + '/templates'
 
+port = process.env.PORT || 8080
+
 Connect.createServer()
 .use '/', Connect.router (app) ->
   app.get '/', (req, res, next) ->
@@ -30,5 +32,4 @@ Connect.createServer()
 
         stream.on 'data', (c) -> buffer += c
         stream.on 'end', () -> res.end buffer
-.listen 8080
-    
+.listen port
