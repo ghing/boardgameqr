@@ -1,1 +1,7 @@
 *.swp
+node_modules/.bin
+node_modules/coffee-script
+node_modules/connect
+node_modules/mu2
+node_modules/qrcode
+npm-debug.log
