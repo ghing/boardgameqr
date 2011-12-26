@@ -2,10 +2,18 @@
   "name": "boardgameqr",
   "version": "0.0.1",
   "dependencies": {
-    "canvas": "0.8.2",
+    "canvas": "https://github.com/elspoono/node-canvas-heroku/tarball/master", 
     "coffee-script": "1.2.0",
     "connect": "1.8.5",
     "mu2": "0.5.3",
     "qrcode": "0.1.1"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": "*"
+  },
+  "author": "Geoffrey Hing <geoffhing@gmail.com> (http://geoff.terrorware.com/)",
+  "repository": {
+    "url": ""
   }
 }
