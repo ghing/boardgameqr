@@ -16,12 +16,12 @@ Connect.createServer()
   app.get '/game/:id', (req, res, next) ->
     geekURL = "http://boardgamegeek.com/boardgame/" + req.params.id + "/#collection"
     res.writeHead 302, {"Location": geekURL}
-    res.end "Got here"
+    res.end "Redirecting to Board Game Geek"
   app.get '/game/:id/qr', (req, res, next) ->
     gameURL = "http://" + req.headers.host + "/game/" + req.params.id + "/"
     res.writeHead 200, {'Content-Type': "text/html"}
     QRCode.toDataURL gameURL, (err, url) ->
-      Mu.compile 'qrcode.html', (err, parsed) ->  
+      Mu.compile 'qrcode.html', (err, parsed) ->
         if err
           console.log 'Error compiling template'
 
