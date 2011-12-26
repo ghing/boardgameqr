@@ -24,7 +24,7 @@
       res.writeHead(302, {
         "Location": geekURL
       });
-      return res.end("Got here");
+      return res.end("Redirecting to Board Game Geek");
     });
     return app.get('/game/:id/qr', function(req, res, next) {
       var gameURL;
@@ -51,6 +51,6 @@
         });
       });
     });
-  })).listen(port);
+  })).use('/public', Connect.static(__dirname + '/public')).listen(port);
 
 }).call(this);
