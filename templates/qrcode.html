@@ -2,10 +2,40 @@
 <html>
   <head>
     <title>{{ title }}</title>
+    <link rel="stylesheet" type="text/css" href="/public/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" /> 
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script> 
+    <script type="text/javascript">
+    $(function() {
+        $( "#searchtxt" ).autocomplete({
+            source: "/api/0.1/games/autocomplete/",
+            minLength: 4,
+            select: function( event, ui ) {
+                this.value = ui.item.label;
+                $(this).data('value', ui.item.value);
+                return false;
+            }
+        });
+
+        $( "#searchbtn" ).click(function() {
+            var gameId = $( "#searchtxt" ).data('value');
+            window.location = "/qr/game/" + gameId + "/";
+            return false;
+        });
+        
+    });
+    </script>
   </head>
   <body>
-    <div class="container">
-        <img src="{{ qrcode_url }}" />
+      <div class="container">
+          <form class="search-form">
+              <input id="searchtxt" class="search-query" type="text" />
+              <button id="searchbtn" class="btn" type="submit">Search</button>
+          </form>
+          {{ #has_qrcode }}
+          <img src="{{ qrcode_url }}" />
+          {{ /has_qrcode }}
     </div>
   </body>
 </html>
