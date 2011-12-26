@@ -1,0 +1,1 @@
+web: node boardgameqr.js
