@@ -36,6 +36,9 @@
           {{ #has_qrcode }}
           <img src="{{ qrcode_url }}" />
           {{ /has_qrcode }}
+          {{ #has_metadata }}
+          <p>{{ name }} ({{ yearpublished }})</p>
+          {{ /has_metadata }}
     </div>
   </body>
 </html>
