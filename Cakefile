@@ -2,7 +2,7 @@
 {spawn} = require 'child_process'
 
 task 'build', 'Build project', ->
-  exec 'coffee --compile boardgameqr.coffee', (err, stdout, stderr) ->
+  exec 'coffee --compile boardgameqr.coffee schema.coffee', (err, stdout, stderr) ->
     throw err if err
     console.log stdout + stderr
 
