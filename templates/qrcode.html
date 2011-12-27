@@ -31,7 +31,7 @@
       <div class="navbar navbar-static">
           <div class="navbar-inner">
               <div class="container">
-                  <a class="brand" href="/">Board Game QR</a>
+                  <a class="brand" href="/">Board Game QR [alpha]</a>
                   <ul class="nav">
                       <li class="active"><a href="/">Home</a></li>
                   </ul>
@@ -43,14 +43,29 @@
           </div>
       </div>
       <div class="container">
-          <div class="row">
-              <div class="span12">
-                  {{ #has_qrcode }}
+          {{ #has_qrcode }}
+          <div id="qrcode" class="row">
+              <div class="span4 offset4">
                   <img src="{{ qrcode_url }}" />
-                  {{ /has_qrcode }}
                   {{ #has_metadata }}
                   <p>{{ name }} ({{ yearpublished }})</p>
                   {{ /has_metadata }}
+
+              </div>
+          </div>
+          {{ /has_qrcode }}
+          <div id="about" class="row">
+              <div class="span 8 offset2">
+                  <h2>About</h2>
+
+                  <p>Board Game QR is a prototype system that let's you log your game plays to Board Game Geek by scanning a QR code.</p>
+                  <p>To use:</p>
+                  <ol>
+                      <li><a href="/signup">Sign up</a> for an account</li>
+                      <li>Generate and print QR codes for your games</li>
+                      <li>Scan the QR code with your smartphone to log a play</li>
+                  </ol>
+
               </div>
           </div>
     </div>
