@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <link rel="stylesheet" type="text/css" href="/public/css/bootstrap.min.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
+    <script type="text/javascript">
+    $(function() {
+        $('#signup').submit(function() {
+            var $inputs = $('#signup *').filter(':input');
+            var data = {
+                'username': $('#signup *').filter(':input').filter('[name="email"]').val(),
+                'password': $('#signup *').filter(':input').filter('[name="password"]').val(),
+                'email': $('#signup *').filter(':input').filter('[name="email"]').val(),
+                'bggusername': $('#signup *').filter(':input').filter('[name="bggusername"]').val(),
+                'bggpassword': $('#signup *').filter(':input').filter('[name="bggpassword"]').val()
+            };
+            $.ajax(
+                {
+                    url: '/api/0.1/users',
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    data: JSON.stringify(data),
+                    error: function(jqXHR, textStatus, errorThrown) {
+                    },
+                    success: function(data, textStatus, jqXHR) {
+                    },
+                    type: 'POST'
+                }
+            );
+            return false;
+        });
+    });
+    </script>
+  </head>
+  <body>
+      <div class="container">
+          <form id="signup" class="horizontal-form">
+              <legend class="control-group">New Account Information</legend>
+              <fieldset class="control-group">
+                  <label class="control-label" for="email">E-mail</label>
+                  <div class="controls">
+                      <input class="xlarge" type="text" name="email" />
+                  </div>
+                  <label class="control-label" for="password">New Password</label>
+                  <div class="controls">
+                      <input class="xlarge" type="password" name="password" />
+                  </div>
+              </fieldset>
+              <legend class="control-group">Board Game Geek Account Information</legend>
+              <p class="help-text">In order for Board Game QR to log plays on your behalf, you need to fill in this section with information about your Board Game Geek account.  <span class="label important">Important</span> These values are not the ones you use to log into your Board Game Geek account. You need to go to the <a href="http://www.boardgamegeek.com/cookiedump.php">Cookie Dump</a> page and copy the values for the <em>bggusername</em> and <em>bggpassword</em> keys and paste them in the form below.
+              <fieldset class="control-group">
+                  <label class="control-label" for="bggusername">bggusername</label>
+                  <div class="controls">
+                      <input class="xlarge" type="text" name="bggusername" />
+                  </div>
+                  <label class="control-label" for="bggpassword">bggpassword</label>
+                  <div class="controls">
+                      <input class="xlarge" type="password" name="bggpassword" />
+                  </div>
+              </fieldset>
+              <fieldset class="form-actions">
+                  <button class="btn primary" type="submit">Create account</button>
+              </fieldset>
+          </form>
+    </div>
+  </body>
+</html>
