@@ -8,7 +8,8 @@
     "mu2": "0.5.3",
     "qrcode": "0.1.1",
     "request": "2.2.9",
-    "xml2json": "0.2.4"
+    "xml2json": "0.2.4",
+    "pg": "0.6.8"
   },
   "devDependencies": {},
   "engines": {
