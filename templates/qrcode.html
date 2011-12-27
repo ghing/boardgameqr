@@ -28,17 +28,31 @@
     </script>
   </head>
   <body>
+      <div class="navbar navbar-static">
+          <div class="navbar-inner">
+              <div class="container">
+                  <a class="brand" href="/">Board Game QR</a>
+                  <ul class="nav">
+                      <li class="active"><a href="/">Home</a></li>
+                  </ul>
+                  <form class="form-search navbar-search pull-left" action="" >
+                      <input id="searchtxt" class="search-query" type="text" />
+                      <button id="searchbtn" class="btn" type="submit">Get QR Code</button>
+                  </form>
+              </div>
+          </div>
+      </div>
       <div class="container">
-          <form class="search-form">
-              <input id="searchtxt" class="search-query" type="text" />
-              <button id="searchbtn" class="btn" type="submit">Get QR Code</button>
-          </form>
-          {{ #has_qrcode }}
-          <img src="{{ qrcode_url }}" />
-          {{ /has_qrcode }}
-          {{ #has_metadata }}
-          <p>{{ name }} ({{ yearpublished }})</p>
-          {{ /has_metadata }}
+          <div class="row">
+              <div class="span12">
+                  {{ #has_qrcode }}
+                  <img src="{{ qrcode_url }}" />
+                  {{ /has_qrcode }}
+                  {{ #has_metadata }}
+                  <p>{{ name }} ({{ yearpublished }})</p>
+                  {{ /has_metadata }}
+              </div>
+          </div>
     </div>
   </body>
 </html>

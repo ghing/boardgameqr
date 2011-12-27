@@ -154,7 +154,11 @@
               if (js.items.item != null) {
                 hasMetadata = true;
                 item = js.items.item;
-                gameName = item.name[0].value;
+                if (item.name.length != null) {
+                  gameName = item.name[0].value;
+                } else {
+                  gameName = item.name.value;
+                }
                 gamePublished = item.yearpublished.value;
               }
             }

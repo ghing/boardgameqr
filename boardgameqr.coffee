@@ -113,7 +113,10 @@ Connect.createServer()
             if js.items.item?
               hasMetadata = true
               item = js.items.item
-              gameName = item.name[0].value
+              if item.name.length? 
+                gameName = item.name[0].value
+              else
+                gameName = item.name.value
               gamePublished = item.yearpublished.value
 
           Mu.compile 'qrcode.html', (err, parsed) ->
