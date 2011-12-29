@@ -168,9 +168,18 @@ Connect.createServer()
             client = new Pg.Client connectionString
             client.connect()
             query = client.query 'INSERT INTO users(username, password, email, bggusername, bggpassword) VALUES($1, $2, $3, $4, $5)', [userData.username, encPass, userData.email, userData.bggusername, userData.bggpassword]
-            query.on 'end', () -> client.end()
-            res.writeHead 201, {'Content-Type': 'application/json'}
-            res.end JSON.stringify(userResponse)
+            query.on 'end', () -> 
+              client.end()
+              res.writeHead 201, {'Content-Type': 'application/json'}
+              res.end JSON.stringify(userResponse)
+            query.on 'error', (err) ->
+              client.end()
+              errText = err.toString()
+              if errText == 'Error: duplicate key value violates unique constraint "users_username_key"'
+                errText = "User with e-mail address " + userData.email + " already exists."
+
+              res.writeHead 400, {'Content-Type': 'application/json'}
+              res.end JSON.stringify({'error': errText})
           else
             res.writeHead 400, {'Content-Type': 'application/json'}
             res.end JSON.stringify({'error': 'Missing user attribute'})

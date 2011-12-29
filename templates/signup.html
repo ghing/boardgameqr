@@ -4,8 +4,14 @@
     <title>{{ title }}</title>
     <link rel="stylesheet" type="text/css" href="/public/css/bootstrap.min.css" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
+    <script type="text/javascript" src="/public/js/bootstrap-alert.js"></script>
     <script type="text/javascript">
     $(function() {
+        // Enable Bootstrap alert messages
+        $(".alert-message").alert();
+        function alertMessage(level, msg) {
+            return '<div class="alert-message ' + level + '"><a class="close" href="#" data-dismiss="alert">x</a><p>' + msg + '</p></div>';
+        }
         $('#signup').submit(function() {
             var $inputs = $('#signup *').filter(':input');
             var data = {
@@ -22,8 +28,11 @@
                     dataType: 'json',
                     data: JSON.stringify(data),
                     error: function(jqXHR, textStatus, errorThrown) {
+                        var errorData = JSON.parse(jqXHR.responseText);
+                        $('.container').prepend(alertMessage("error", errorData.error));
                     },
                     success: function(data, textStatus, jqXHR) {
+                        $('.container').html(alertMessage("success", 'Account created, now <a href="/">create some QR codes</a> for your games.'));
                     },
                     type: 'POST'
                 }

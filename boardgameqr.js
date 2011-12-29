@@ -255,12 +255,26 @@
               client.connect();
               query = client.query('INSERT INTO users(username, password, email, bggusername, bggpassword) VALUES($1, $2, $3, $4, $5)', [userData.username, encPass, userData.email, userData.bggusername, userData.bggpassword]);
               query.on('end', function() {
-                return client.end();
+                client.end();
+                res.writeHead(201, {
+                  'Content-Type': 'application/json'
+                });
+                return res.end(JSON.stringify(userResponse));
               });
-              res.writeHead(201, {
-                'Content-Type': 'application/json'
+              return query.on('error', function(err) {
+                var errText;
+                client.end();
+                errText = err.toString();
+                if (errText === 'Error: duplicate key value violates unique constraint "users_username_key"') {
+                  errText = "User with e-mail address " + userData.email + " already exists.";
+                }
+                res.writeHead(400, {
+                  'Content-Type': 'application/json'
+                });
+                return res.end(JSON.stringify({
+                  'error': errText
+                }));
               });
-              return res.end(JSON.stringify(userResponse));
             } else {
               res.writeHead(400, {
                 'Content-Type': 'application/json'
