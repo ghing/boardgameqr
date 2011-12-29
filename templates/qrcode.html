@@ -6,42 +6,10 @@
     <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" /> 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script> 
-    <script type="text/javascript">
-    $(function() {
-        $( "#searchtxt" ).autocomplete({
-            source: "/api/0.1/games/autocomplete/",
-            minLength: 4,
-            select: function( event, ui ) {
-                this.value = ui.item.label;
-                $(this).data('value', ui.item.value);
-                return false;
-            }
-        });
-
-        $( "#searchbtn" ).click(function() {
-            var gameId = $( "#searchtxt" ).data('value');
-            window.location = "/qr/game/" + gameId + "/";
-            return false;
-        });
-        
-    });
-    </script>
+    {{ >gamesearch.html }}
   </head>
   <body>
-      <div class="navbar navbar-static">
-          <div class="navbar-inner">
-              <div class="container">
-                  <a class="brand" href="/">Board Game QR [alpha]</a>
-                  <ul class="nav">
-                      <li class="active"><a href="/">Home</a></li>
-                  </ul>
-                  <form class="form-search navbar-search pull-left" action="" >
-                      <input id="searchtxt" class="search-query" type="text" />
-                      <button id="searchbtn" class="btn" type="submit">Get QR Code</button>
-                  </form>
-              </div>
-          </div>
-      </div>
+      {{ >navbar.html }}
       <div class="container">
           {{ #has_qrcode }}
           <div id="qrcode" class="row">

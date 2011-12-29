@@ -1,0 +1,20 @@
+<script type="text/javascript">
+$(function() {
+    $( "#searchtxt" ).autocomplete({
+        source: "/api/0.1/games/autocomplete/",
+        minLength: 4,
+        select: function( event, ui ) {
+            this.value = ui.item.label;
+            $(this).data('value', ui.item.value);
+            return false;
+        }
+    });
+
+    $( "#searchbtn" ).click(function() {
+        var gameId = $( "#searchtxt" ).data('value');
+        window.location = "/qr/game/" + gameId + "/";
+        return false;
+    });
+    
+});
+</script>

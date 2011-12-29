@@ -3,8 +3,11 @@
   <head>
     <title>{{ title }}</title>
     <link rel="stylesheet" type="text/css" href="/public/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" /> 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script> 
     <script type="text/javascript" src="/public/js/bootstrap-alert.js"></script>
+    {{ >gamesearch.html }}
     <script type="text/javascript">
     $(function() {
         // Enable Bootstrap alert messages
@@ -43,6 +46,7 @@
     </script>
   </head>
   <body>
+      {{ >navbar.html }}
       <div class="container">
           <div class="row">
               <div class="span12">
