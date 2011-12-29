@@ -44,34 +44,38 @@
   </head>
   <body>
       <div class="container">
-          <form id="signup" class="horizontal-form">
-              <legend class="control-group">New Account Information</legend>
-              <fieldset class="control-group">
-                  <label class="control-label" for="email">E-mail</label>
-                  <div class="controls">
-                      <input class="xlarge" type="text" name="email" />
-                  </div>
-                  <label class="control-label" for="password">New Password</label>
-                  <div class="controls">
-                      <input class="xlarge" type="password" name="password" />
-                  </div>
-              </fieldset>
-              <legend class="control-group">Board Game Geek Account Information</legend>
-              <p class="help-text">In order for Board Game QR to log plays on your behalf, you need to fill in this section with information about your Board Game Geek account.  <span class="label important">Important</span> These values are not the ones you use to log into your Board Game Geek account. You need to log into your Board Game Geek account and go to the <a href="http://www.boardgamegeek.com/cookiedump.php">Cookie Dump</a> page and copy the values for the <em>bggusername</em> and <em>bggpassword</em> keys and paste them in the form below.
-              <fieldset class="control-group">
-                  <label class="control-label" for="bggusername">bggusername</label>
-                  <div class="controls">
-                      <input class="xlarge" type="text" name="bggusername" />
-                  </div>
-                  <label class="control-label" for="bggpassword">bggpassword</label>
-                  <div class="controls">
-                      <input class="xlarge" type="password" name="bggpassword" />
-                  </div>
-              </fieldset>
-              <fieldset class="form-actions">
-                  <button class="btn primary" type="submit">Create account</button>
-              </fieldset>
-          </form>
+          <div class="row">
+              <div class="span12">
+                  <form id="signup" class="horizontal-form">
+                      <legend class="control-group">New Account Information</legend>
+                      <fieldset class="control-group">
+                          <label class="control-label" for="email">E-mail</label>
+                          <div class="controls">
+                              <input class="xlarge" type="text" name="email" />
+                          </div>
+                          <label class="control-label" for="password">New Password</label>
+                          <div class="controls">
+                              <input class="xlarge" type="password" name="password" />
+                          </div>
+                      </fieldset>
+                      <legend class="control-group">Board Game Geek Account Information</legend>
+                      <p class="help-text">In order for Board Game QR to log plays on your behalf, you need to fill in this section with information about your Board Game Geek account.  <span class="label important">Important</span> These values are not the ones you use to log into your Board Game Geek account. You need to log into your Board Game Geek account and go to the <a href="http://www.boardgamegeek.com/cookiedump.php">Cookie Dump</a> page and copy the values for the <em>bggusername</em> and <em>bggpassword</em> keys and paste them in the form below.
+                      <fieldset class="control-group">
+                          <label class="control-label" for="bggusername">bggusername</label>
+                          <div class="controls">
+                              <input class="xlarge" type="text" name="bggusername" />
+                          </div>
+                          <label class="control-label" for="bggpassword">bggpassword</label>
+                          <div class="controls">
+                              <input class="xlarge" type="password" name="bggpassword" />
+                          </div>
+                      </fieldset>
+                      <fieldset class="form-actions">
+                          <button class="btn primary" type="submit">Create account</button>
+                      </fieldset>
+                  </form>
+            </div>
+        </div>
     </div>
   </body>
 </html>
